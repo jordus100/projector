@@ -1,0 +1,22 @@
+#!/bin/sh
+# proj-klient
+#
+
+PORT=443
+SERVER=="http://s0:$PORT/"
+
+# START
+
+ROOMS_URL="$SERVER/get/rooms"
+
+#room=$(curl -sfL $ROOMS_URL)
+#
+room=$(cat /etc/laplace/room) || { echo "brak pliku /etc/laplace/room" >&2  ; exit 13 ;}
+
+url="$SERVER/?id=$room"
+
+echo "$url" >&2
+
+firefox -new-tab $link >/dev/null 2>&1 &
+
+exit
