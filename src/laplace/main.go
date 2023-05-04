@@ -9,6 +9,8 @@ import (
 	"time"
 )
 
+var staticDir string
+
 func main() {
 	addr := flag.String("addr", "0.0.0.0:8080", "Listen address")
 	tls := flag.Bool("tls", true, "Use TLS")
@@ -17,7 +19,7 @@ func main() {
 	flag.Parse()
 
 	rand.Seed(time.Now().UnixNano())
-	server := core.GetHttp()
+	server := core.GetHttp(staticDir)
 
 	if *tls {
 		log.Println("Listening on TLS:", *addr)

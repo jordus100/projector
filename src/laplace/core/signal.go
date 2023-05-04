@@ -33,16 +33,16 @@ func sendHeartBeatWS(ticker *time.Ticker, conn *websocket.Conn, quit chan struct
     }
 }
 
-func GetHttp() *http.ServeMux {
+func GetHttp(staticDir string) *http.ServeMux {
     server := http.NewServeMux()
     room_name := ""
-    server.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("/usr/local/share/proj/files/static"))))
+    server.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir(staticDir + "/static"))))
 
     server.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-        http.ServeFile(w, r, "/usr/local/share/proj/files/main.html")
+        http.ServeFile(w, r, staticDir + "/main.html")
     })
 
-    server.HandleFunc("/get_room", func(w http.ResponseWriter, r *http.Request) {
+    server.HandleFunc("/room/get", func(w http.ResponseWriter, r *http.Request) {
         fmt.Fprintf(w, room_name)
     })
 
