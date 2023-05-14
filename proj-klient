@@ -2,16 +2,14 @@
 # proj-klient
 #
 
-PORT=443
-SERVER=="http://s0:$PORT/"
+PORT=8080
+SERVER="http://s0:$PORT"
 
 # START
 
-ROOMS_URL="$SERVER/get/rooms"
+ROOMS_URL="$SERVER/room/get"
 
-#room=$(curl -sfL $ROOMS_URL)
-#
-room=$(cat /etc/laplace/room) || { echo "brak pliku /etc/laplace/room" >&2  ; exit 13 ;}
+room=$(curl -sfL $ROOMS_URL)
 
 url="$SERVER/?id=$room"
 

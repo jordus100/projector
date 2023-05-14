@@ -1,29 +1,23 @@
 #!/bin/sh
 # proj-start
 # Uruchamia serwer laplace i otwiera w przeglądarce stronę do udostępniania,
-# parviaj 2023
+# parviaij 2023
 
 #BIN=/usr/local/sbin		# Docelowa instalacja
 
-PORT=443			# 55443 i bez root
+PORT=8080			
 URL="http://localhost:$PORT/?stream=1"
 
-BROWSER="/usr/bin/firefox -new-tab"
+BROWSER="/usr/bin/firefox -new-tab "
 
+proj=laplace
 # START
-
-bin=${0%/*}			# /pub/Linux/Arch/zetis/bin /proj-start
-bin=/pub/Linux/Arch/zetis/bin
 
 [ "$USER" = "root" ] && fatal "Należy uruchamiać bez sudo"
 
-sudo pkill -f laplace
+sudo pkill -f $proj
 
-laplace="$bin/proj/bin/laplace"
-
-#ls -l $laplace ; exit
-
-sudo $laplace --tls=false >/dev/null & #2>&1 &
+sudo $proj --tls=false >/dev/null & #2>&1 &
 
 pid=$! ; echo "PID=$pid" ; ps -p $pid
 
