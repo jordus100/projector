@@ -6,24 +6,22 @@ pkgver=1.0.0
 arch=('any')
 makedepends=('go' 'git')
 source=('git+https://github.com/jordus100/laplace-compiled')
+sha256sums=('SKIP')
 
-_static_files="/usr/share/proj"
-_exe_files="/usr/bin"
-_src="laplace-compiled/laplace/src"
+_static_files="usr/share/proj"
+_exe_files="usr/bin"
+_src="laplace-compiled/src/laplace"
 _repo="laplace-compiled/"
 
 build() {
 	cd "$srcdir/$_src"
-	go build -o laplace -ldflags "-X main.staticDir=$_static_files" main.go 
-}
-
-check() {
-	cksums=(SKIP)
+	go build -o laplace -ldflags "-X main.staticDir=/$_static_files/files" main.go 
 }
 
 package() {
 	cd "$srcdir/$_src"
-	cp "laplace" $pkgdir/$_exe_files
-	cd "$srcdir/$_repo"
-	cp -r $src/files $pkgdir/$_static_files 
+	install -D "laplace" "$pkgdir/$_exe_files/laplace"
+	cd "$srcdir/$_repo/files"
+	install -dD "files" "$pkgdir/$_static_files"
+	cp -r . "$pkgdir/$_static_files/files"
 }
