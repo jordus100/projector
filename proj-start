@@ -10,16 +10,11 @@ URL="http://localhost:$PORT/?stream=1"
 
 BROWSER="/usr/bin/firefox -new-tab "
 
-proj=laplace
 # START
 
-[ "$USER" = "root" ] && fatal "Należy uruchamiać bez sudo"
+# [ "$USER" = "root" ] && fatal "Należy uruchamiać bez sudo"
 
-sudo pkill -f $proj
-
-sudo $proj --tls=false >/dev/null & #2>&1 &
-
-pid=$! ; echo "PID=$pid" ; ps -p $pid
+sudo systemctl start projector
 
 warn -M 'Proszę kliknąć guzik "Start stream" i wybrać udostępniane okno'
 

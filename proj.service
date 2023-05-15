@@ -1,0 +1,5 @@
+[Unit]
+Description=Projektor - serwer usługi do udostępniania ekranu
+
+[Service]
+ExecStart=laplace
