@@ -2,4 +2,4 @@
 Description=Projektor - serwer usługi do udostępniania ekranu
 
 [Service]
-ExecStart=laplace
+ExecStart=laplace --tls=false
