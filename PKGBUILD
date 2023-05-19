@@ -3,7 +3,7 @@
 pkgname='projector'
 pkgrel=1
 pkgver=1.0.0
-arch=('any')
+arch=('x86_64')
 makedepends=('go' 'git')
 source=('git+https://github.com/jordus100/projector')
 sha256sums=('SKIP')
