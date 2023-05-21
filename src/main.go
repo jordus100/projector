@@ -14,8 +14,8 @@ var staticDir string
 func main() {
 	addr := flag.String("addr", "0.0.0.0:8080", "Listen address")
 	tls := flag.Bool("tls", true, "Use TLS")
-	certFile := flag.String("certFile", "files/server.crt", "TLS cert file")
-	keyFile := flag.String("keyFile", "files/server.key", "TLS key file")
+	certFile := flag.String("certFile", staticDir + "/server.crt", "TLS cert file")
+	keyFile := flag.String("keyFile", staticDir + "/server.key", "TLS key file")
 	flag.Parse()
 
 	rand.Seed(time.Now().UnixNano())
