@@ -2,19 +2,20 @@
 # proj-klient
 # Skrypt ułatwiający oglądanie ekranu udostępnionego w aplikacji projector
 
+SERVER=m1
 PORT=8080
-SERVER="https://s2:$PORT"
+BASE_URL="https://$SERVER:$PORT"
 
 # START
 
-ROOMS_URL="$SERVER/room/get"
+ROOMS_URL="$BASE_URL/room/get"
 
 room=$(curl -sfk $ROOMS_URL)
 
-url="$SERVER/?id=$room"
+url="$BASE_URL/?id=$room"
 
 echo "$url" >&2
 
-google-chrome --ignore-certificate-errors -new-tab $url >/dev/null 2>&1 &
+chromium --ignore-certificate-errors -new-tab $url >/dev/null 2>&1 &
 
 exit

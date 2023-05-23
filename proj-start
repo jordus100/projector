@@ -5,10 +5,9 @@
 
 #BIN=/usr/local/sbin		# Docelowa instalacja
 
+SERVER=m1
 PORT=8080			
-URL="http://localhost:$PORT/?stream=1"
-
-BROWSER="/usr/bin/firefox -new-tab "
+URL="http://$SERVER:$PORT/?stream=1"
 
 # START
 
@@ -18,6 +17,6 @@ sudo systemctl start projector
 
 warn -M 'Proszę kliknąć guzik "Start stream" i wybrać udostępniane okno'
 
-$BROWSER "$URL" >/dev/null 2>&1 &
+chromium --ignore-certificate-errors -new-tab "$URL" >/dev/null 2>&1 &
 
 exit
