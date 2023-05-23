@@ -24,12 +24,12 @@ func main() {
 	if *tls {
 		log.Println("Listening on TLS:", *addr)
 		if err := http.ListenAndServeTLS(*addr, *certFile, *keyFile, server); err != nil {
-			log.Fatalln(err)
+			log.Fatal(err)
 		}
 	} else {
 		log.Println("Listening:", *addr)
 		if err := http.ListenAndServe(*addr, server); err != nil {
-			log.Fatalln(err)
+			log.Fatal(err)
 		}
 	}
 }
