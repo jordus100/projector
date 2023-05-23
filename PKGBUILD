@@ -25,7 +25,7 @@ package() {
 	cd "$srcdir/$pkgname"
 	install -D "proj-start" "$pkgdir/$_scripts/proj-start"
 	install -D "proj-klient" "$pkgdir/$_scripts/proj-klient"
-	install -D "projector.service" "$pkgdir/$_service_files/projector.service"
+	install -D -m="u=rw g=r o=r" "projector.service" "$pkgdir/$_service_files/projector.service"
 	cd "$srcdir/$pkgname/files"
 	install -dD "files" "$pkgdir/$_static_files"
 	cp -r . "$pkgdir/$_static_files/files"

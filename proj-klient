@@ -9,7 +9,7 @@ SERVER="https://s2:$PORT"
 
 ROOMS_URL="$SERVER/room/get"
 
-room=$(curl -sf $ROOMS_URL)
+room=$(curl -sfk $ROOMS_URL)
 
 url="$SERVER/?id=$room"
 
