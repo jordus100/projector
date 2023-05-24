@@ -3,17 +3,14 @@
 # Uruchamia serwer laplace i otwiera w przeglądarce stronę do udostępniania,
 # parviaij 2023
 
-#BIN=/usr/local/sbin		# Docelowa instalacja
-
 SERVER=m1
 PORT=8080			
-URL="http://$SERVER:$PORT/?stream=1"
+URL="https://$SERVER:$PORT/?stream=1"
 
 # START
 
-# [ "$USER" = "root" ] && fatal "Należy uruchamiać bez sudo"
-
-sudo systemctl start projector
+# odkomentować, jeśli projector.service nie jest uruchomiony wcześniej
+# sudo systemctl start projector  
 
 warn -M 'Proszę kliknąć guzik "Start stream" i wybrać udostępniane okno'
 
