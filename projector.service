@@ -4,7 +4,7 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-ExecStart=laplace
+ExecStart=laplace --addr="0.0.0.0:8080"
 
 [Install]
 WantedBy=multi-user.target
