@@ -48,6 +48,10 @@ const rtpPeerConnectionOptions = {
 };
 
 const preset = {
+    highQualityLanOnly: {
+        displayMediaOption: displayMediaOptions.noConstraint,
+        rtpPeerConnectionOption: rtpPeerConnectionOptions.noStun,
+    },
     balanced: {
         displayMediaOption: displayMediaOptions.v720p30,
         rtpPeerConnectionOption: rtpPeerConnectionOptions.stunGoogle,
@@ -66,10 +70,6 @@ const preset = {
     },
     performanceLanOnly: {
         displayMediaOption: displayMediaOptions.v480p60,
-        rtpPeerConnectionOption: rtpPeerConnectionOptions.noStun,
-    },
-    highQualityLanOnly: {
-        displayMediaOption: displayMediaOptions.noConstraint,
         rtpPeerConnectionOption: rtpPeerConnectionOptions.noStun,
     },
 };

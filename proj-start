@@ -14,6 +14,6 @@ URL="https://$SERVER:$PORT/?stream=1"
 
 warn -M 'Proszę kliknąć guzik "Start stream" i wybrać udostępniane okno'
 
-chromium --ignore-certificate-errors -new-tab "$URL" >/dev/null 2>&1 &
+firefox -new-tab "$URL" >/dev/null 2>&1 &
 
 exit
