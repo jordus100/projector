@@ -15,8 +15,9 @@ _service_files="usr/lib/systemd/system"
 _src="$pkgname/src"
 
 build() {
-	cd "$srcdir/$_src"
+	cd "$srcdir"
 	git am 0001-patch-to-set-constant-room-id.patch
+	cd "$_src"
 	go build -o laplace -ldflags "-X main.staticDir=/$_static_files/files" main.go 
 }
 
