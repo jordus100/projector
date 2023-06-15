@@ -15,20 +15,20 @@ _service_files="usr/lib/systemd/system"
 _src="$pkgname/src"
 
 build() {
-	cd "$srcdir"
-	git am 0001-patch-to-set-constant-room-id.patch
-	cd "$_src"
-	go build -o laplace -ldflags "-X main.staticDir=/$_static_files/files" main.go 
+        cd "$srcdir/$pkgname"
+        git apply --ignore-space-change --ignore-whitespace labsk.patch
+        cd "$srcdir/$_src"
+        go build -o laplace -ldflags "-X main.staticDir=/$_static_files/files" main.go
 }
 
 package() {
-	cd "$srcdir/$_src"
-	install -D "laplace" "$pkgdir/$_exe_files/laplace"
-	cd "$srcdir/$pkgname"
-	install -D "proj-start" "$pkgdir/$_scripts/proj-start"
-	install -D "proj-klient" "$pkgdir/$_scripts/proj-klient"
-	install -D -m 644 "projector.service" "$pkgdir/$_service_files/projector.service"
-	cd "$srcdir/$pkgname/files"
-	install -dD "files" "$pkgdir/$_static_files"
-	cp -r . "$pkgdir/$_static_files/files"
+        cd "$srcdir/$_src"
+        install -D "laplace" "$pkgdir/$_exe_files/laplace"
+        cd "$srcdir/$pkgname"
+        install -D "proj-start" "$pkgdir/$_scripts/proj-start"
+        install -D "proj-klient" "$pkgdir/$_scripts/proj-klient"
+        install -D -m 644 "projector.service" "$pkgdir/$_service_files/projector.service"
+        cd "$srcdir/$pkgname/files"
+        install -dD "files" "$pkgdir/$_static_files"
+        cp -r . "$pkgdir/$_static_files/files"
 }
