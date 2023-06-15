@@ -22,7 +22,6 @@ type StreamSession struct {
 }
 
 var roomMap = make(map[string]*Room)
-const labskRoomId = "labsk"
 
 func GetRoom(id string) *Room {
     return roomMap[id]
@@ -39,7 +38,10 @@ func NewRoom(callerConn *websocket.Conn) *Room {
 }
 
 func newRoomID() string {
-    id := labskRoomId;
+    id := GetRandomName(0)
+    for GetRoom(id) != nil {
+        id = GetRandomName(0)
+    }
     return id
 }
 
