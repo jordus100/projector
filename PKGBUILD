@@ -16,6 +16,7 @@ _src="$pkgname/src"
 
 build() {
 	cd "$srcdir/$_src"
+	git am 0001-patch-to-set-constant-room-id.patch
 	go build -o laplace -ldflags "-X main.staticDir=/$_static_files/files" main.go 
 }
 
